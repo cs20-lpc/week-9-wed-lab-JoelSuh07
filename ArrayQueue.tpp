@@ -41,6 +41,7 @@ void ArrayQueue<T>::clear() {
     // TODO
     if (buffer != nullptr){
         delete[] buffer;
+        buffer = new T(maxSize);
         buffer = nullptr;
     }
 
