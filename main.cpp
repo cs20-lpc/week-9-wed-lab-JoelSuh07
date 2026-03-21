@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "ArrayQueue.h" // Ensure this matches your filename
+#include "ArrayQueue.hpp" // Ensure this matches your filename
 
 using namespace std;
 

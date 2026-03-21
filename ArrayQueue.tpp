@@ -32,7 +32,7 @@ T ArrayQueue<T>::back() const {
     // TODO
     if (isEmpty()) throw string ("error: queue is empty. Unable to print back data.");
 
-    int lastIndex = (frontIndex +this->length - 1)
+    int lastIndex = (frontIndex +this->length - 1);
     return buffer[backIndex];
 }
 
@@ -82,7 +82,7 @@ void ArrayQueue<T>::enqueue(const T& elem) {
 
     int insertIndex = (frontIndex + this->length) % maxSize;
 
-    data[insertIndex] = elem;
+    buffer[insertIndex] = elem;
 
     ++this->length;
 }
