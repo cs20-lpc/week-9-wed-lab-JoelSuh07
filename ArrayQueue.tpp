@@ -44,7 +44,6 @@ void ArrayQueue<T>::clear() {
         buffer = new T(maxSize);
         buffer = nullptr;
     }*/
-    delete[] buffer;
 
     this->length = 0;
     frontIndex = 0;
