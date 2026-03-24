@@ -17,22 +17,39 @@ void displayMenu() {
 }
 
 int main() {
-    int size;
-    cout << "Enter max size for the queue: ";
-    cin >> size;
+    int size = 0;
+    do{
 
+    cout << "Enter max size for the queue: ";
+
+        if (!(cin >> size)) {
+        cout << "Invalid input. Please enter a number." << endl;
+        cin.clear();                // 1. Reset the error flags
+        cin.ignore(10000, '\n');    // 2. Discard the "junk" in the buffer
+        continue;                   // 3. Restart the loop
+        }
+    }while (size != 0);
     ArrayQueue<int> myQueue(size);
     int choice, value;
 
     do {
         displayMenu();
-        cin >> choice;
 
+        if (!(cin >> choice)) {
+        cout << "Invalid input. Please enter a number." << endl;
+        cin.clear();                // 1. Reset the error flags
+        cin.ignore(10000, '\n');    // 2. Discard the "junk" in the buffer
+        continue;                   // 3. Restart the loop
+}
         try {
             switch (choice) {
                 case 1:
                     cout << "Enter integer to enqueue: ";
-                    cin >> value;
+                    while (!(cin >> value)) {
+                        cout << "That's not an integer. Try again: ";
+                        cin.clear();
+                        cin.ignore(10000, '\n');
+                    }
                     myQueue.enqueue(value);
                     cout << "Enqueued " << value << endl;
                     break;
