@@ -13,6 +13,8 @@ void displayMenu() {
     cout << "4. View Back" << endl;
     cout << "5. Check Size/Full/Empty" << endl;
     cout << "6. Clear Queue" << endl;
+    cout << "7. Create Backup/Copy" << endl;
+    cout << "8. View Backup Queue Stats" << endl;
     cout << "0. Exit" << endl;
     cout << "Choice: ";
 }
@@ -38,7 +40,7 @@ int main() {
     }
 
     cout << "Queue size set to: " << size << endl;
-
+    ArrayQueue<int> backupQueue(size);
     ArrayQueue<int> myQueue(size);
     int choice, value;
 
@@ -88,6 +90,23 @@ int main() {
                 case 6:
                     myQueue.clear();
                     cout << "Queue cleared." << endl;
+                    break;
+
+                case 7:
+                    cout << "Backing up / Copying (backupQueue = myQueue)..." << endl;
+                    backupQueue = myQueue; // This calls operator= and copy()
+                    cout << "Backup created successfully!" << endl;
+                    break;
+
+                case 8:
+                    cout << "--- Backup Queue Stats ---" << endl;
+                    cout << "Size: " << backupQueue.getLength() << endl;
+                    if (!backupQueue.isEmpty()) {
+                        cout << "Front: " << backupQueue.front() << endl;
+                        cout << "Back: " << backupQueue.back() << endl;
+                    } else {
+                        cout << "Backup is currently empty." << endl;
+                    }
                     break;
 
                 case 0:
