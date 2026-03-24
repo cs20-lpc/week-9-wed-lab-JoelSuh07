@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "ArrayQueue.hpp" // Ensure this matches your filename
+#include "ArrayQueue.hpp"
 
 using namespace std;
 
@@ -40,7 +40,7 @@ int main() {
         cin.clear();                // 1. Reset the error flags
         cin.ignore(10000, '\n');    // 2. Discard the "junk" in the buffer
         continue;                   // 3. Restart the loop
-}
+        }
         try {
             switch (choice) {
                 case 1:
