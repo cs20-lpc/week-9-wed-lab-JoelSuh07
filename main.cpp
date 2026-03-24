@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <limits>
 #include "ArrayQueue.hpp"
 
 using namespace std;
@@ -18,17 +19,26 @@ void displayMenu() {
 
 int main() {
     int size = 0;
-    do{
 
-    cout << "Enter max size for the queue: ";
+    while (true) {
+        cout << "Enter max size for the queue (positive integer): ";
 
-        if (!(cin >> size)) {
-        cout << "Invalid input. Please enter a number." << endl;
-        cin.clear();                // 1. Reset the error flags
-        cin.ignore(10000, '\n');    // 2. Discard the "junk" in the buffer
-        continue;                   // 3. Restart the loop
+        // Check if the input is a valid integer
+        if (cin >> size && size > 0) {
+            // Success! We have a valid positive integer.
+            break; 
+        } else {
+            // If we are here, input was either not an int (like 'abc') or <= 0
+            cout << "Invalid input. Please enter a positive whole number." << endl;
+
+            cin.clear(); // Clear the error flag
+            // Discard everything in the buffer until the next newline
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
-    }while (size != 0);
+    }
+
+    cout << "Queue size set to: " << size << endl;
+
     ArrayQueue<int> myQueue(size);
     int choice, value;
 

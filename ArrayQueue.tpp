@@ -32,18 +32,19 @@ T ArrayQueue<T>::back() const {
     // TODO
     if (isEmpty()) throw string ("error: queue is empty. Unable to print back data.");
 
-    int lastIndex = (frontIndex +this->length - 1);
-    return buffer[backIndex];
+    int lastIndex = (frontIndex + this->length - 1) % maxSize;
+    return buffer[lastIndex];
 }
 
 template <typename T>
 void ArrayQueue<T>::clear() {
     // TODO
-    if (buffer != nullptr){
+    /*if (buffer != nullptr){
         delete[] buffer;
         buffer = new T(maxSize);
         buffer = nullptr;
-    }
+    }*/
+    delete[] buffer;
 
     this->length = 0;
     frontIndex = 0;
